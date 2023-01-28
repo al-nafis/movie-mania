@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">compose-ui-android-experiment</string>
+    <string name="app_greeting">See Different Experiments</string>
+    <string name="tracker_in_the_house_title">Tracker in the House</string>
+    <string name="tracker_in_the_house_instruction">"Click on any person to make them move to a different room or wear a different shirt"</string>
+    <string name="tracker_in_the_house_occupants_count">"Total Occupant(s) in this room: %1$s"</string>
 </resources>
