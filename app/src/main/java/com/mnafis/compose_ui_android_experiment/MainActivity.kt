@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.RoomList
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.LivingRoomScreen
 import com.mnafis.compose_ui_android_experiment.ui.theme.ComposeuiandroidexperimentTheme
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.lightPrimaryColor
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeuiandroidexperimentTheme {
-                Greeting()
+                LivingRoomScreen(roomInfo = RoomList.LIVING_ROOM.value)
             }
         }
     }
@@ -51,7 +53,7 @@ fun Greeting() {
             Text(
                 modifier = Modifier
                     .padding(vertical = Dimens.paddingLg),
-                fontSize = Dimens.titleFontSize,
+                fontSize = Dimens.headerFontSize,
                 text = "See different Experiments"
             )
             Button(

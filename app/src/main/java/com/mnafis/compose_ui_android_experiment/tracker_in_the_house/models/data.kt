@@ -1,58 +1,62 @@
 package com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models
 
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Rooms.*
 import com.mnafis.compose_ui_android_experiment.ui.theme.*
 
-val shirts = listOf(
-    Shirt(color = ColorRed),
-    Shirt(color = ColorBlue),
-    Shirt(color = ColorGreen),
-    Shirt(color = ColorYellow),
-    Shirt(color = ColorGray),
-    Shirt(color = ColorBlack),
-    Shirt(color = ColorDarkGray),
-    Shirt(color = ColorMagenta),
-    Shirt(color = ColorCyan)
-)
+enum class Shirts(val value: Shirt) {
+    RED(Shirt(color = ColorRed)),
+    BLUE(Shirt(color = ColorBlue)),
+    GREEN(Shirt(color = ColorGreen)),
+    YELLOW(Shirt(color = ColorYellow)),
+    GRAY(Shirt(color = ColorGray)),
+    BLACK(Shirt(color = ColorBlack)),
+    DARK_GRAY(Shirt(color = ColorDarkGray)),
+    MAGENTA(Shirt(color = ColorMagenta)),
+    CYAN(Shirt(color = ColorCyan))
+}
 
-val householdResidentsList = listOf(
-    Person(name = "Adam", shirt = shirts[0]),
-    Person(name = "Brook", shirt = shirts[1]),
-    Person(name = "Connor", shirt = shirts[2]),
-    Person(name = "Delilah", shirt = shirts[3]),
-    Person(name = "Ethan", shirt = shirts[4])
-)
+enum class HouseholdResidentsList(val value: Person) {
+    ADAM(Person(name = "Adam", shirt = Shirts.RED.value)),
+    BROOKE(Person(name = "Brooke", shirt = Shirts.BLUE.value)),
+    CONNOR(Person(name = "Connor", shirt = Shirts.GREEN.value)),
+    DELILAH(Person(name = "Delilah", shirt = Shirts.YELLOW.value)),
+    ETHAN(Person(name = "Ethan", shirt = Shirts.GRAY.value))
+}
 
-val rooms = mapOf(
-    LIVING_ROOM to Room(
-        name = LIVING_ROOM.value,
-        occupants = mutableListOf(
-            householdResidentsList[0],
-            householdResidentsList[4]
-        ),
-        availableShirts = mutableListOf(
-            shirts[5]
+enum class RoomList(val value: Room) {
+    LIVING_ROOM(
+        Room(
+            name = "Living Room",
+            occupants = mutableListOf(
+                HouseholdResidentsList.ADAM.value,
+                HouseholdResidentsList.ETHAN.value
+            ),
+            availableShirts = mutableListOf(
+                Shirts.BLACK.value
+            )
         )
     ),
-    DINING_ROOM to Room(
-        name = DINING_ROOM.value,
-        occupants = mutableListOf(
-            householdResidentsList[1]
-        ),
-        availableShirts = mutableListOf(
-            shirts[6]
+    DINING_ROOM(
+        Room(
+            name = "Dining Room",
+            occupants = mutableListOf(
+                HouseholdResidentsList.BROOKE.value
+            ),
+            availableShirts = mutableListOf(
+                Shirts.DARK_GRAY.value
+            )
         )
     ),
-    BEDROOM to Room(
-        name = BEDROOM.value,
-        occupants = mutableListOf(
-            householdResidentsList[2],
-            householdResidentsList[3]
-        ),
-        availableShirts = mutableListOf(
-            shirts[7],
-            shirts[8]
+    BEDROOM(
+        Room(
+            name = "Bedroom",
+            occupants = mutableListOf(
+                HouseholdResidentsList.CONNOR.value,
+                HouseholdResidentsList.DELILAH.value
+            ),
+            availableShirts = mutableListOf(
+                Shirts.MAGENTA.value,
+                Shirts.CYAN.value
+            )
         )
     )
-)
-
+}
