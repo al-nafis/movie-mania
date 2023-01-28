@@ -3,15 +3,15 @@ package com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models
 import com.mnafis.compose_ui_android_experiment.ui.theme.*
 
 enum class Shirts(val value: Shirt) {
-    RED(Shirt(color = ColorRed)),
-    BLUE(Shirt(color = ColorBlue)),
-    GREEN(Shirt(color = ColorGreen)),
-    YELLOW(Shirt(color = ColorYellow)),
-    GRAY(Shirt(color = ColorGray)),
-    BLACK(Shirt(color = ColorBlack)),
-    DARK_GRAY(Shirt(color = ColorDarkGray)),
-    MAGENTA(Shirt(color = ColorMagenta)),
-    CYAN(Shirt(color = ColorCyan))
+    RED(Shirt(colorName = "Red",colorValue = ColorRed)),
+    BLUE(Shirt(colorName = "Blue",colorValue = ColorBlue)),
+    GREEN(Shirt(colorName = "Green",colorValue = ColorGreen)),
+    YELLOW(Shirt(colorName = "Yellow",colorValue = ColorYellow)),
+    GRAY(Shirt(colorName = "Gray",colorValue = ColorGray)),
+    BLACK(Shirt(colorName = "Black",colorValue = ColorBlack)),
+    DARK_GRAY(Shirt(colorName = "Dark Gray",colorValue = ColorDarkGray)),
+    MAGENTA(Shirt(colorName = "Magenta",colorValue = ColorMagenta)),
+    CYAN(Shirt(colorName = "Cyan",colorValue = ColorCyan))
 }
 
 enum class HouseholdResidentsList(val value: Person) {
@@ -22,7 +22,7 @@ enum class HouseholdResidentsList(val value: Person) {
     ETHAN(Person(name = "Ethan", shirt = Shirts.GRAY.value))
 }
 
-enum class RoomList(val value: Room) {
+enum class Rooms(val value: Room) {
     LIVING_ROOM(
         Room(
             name = "Living Room",

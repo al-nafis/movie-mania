@@ -14,11 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.RoomList
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Rooms
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.LivingRoomScreen
-import com.mnafis.compose_ui_android_experiment.ui.theme.ComposeuiandroidexperimentTheme
+import com.mnafis.compose_ui_android_experiment.ui.theme.ComposeUIAndroidExperimentTheme
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
-import com.mnafis.compose_ui_android_experiment.ui.theme.lightPrimaryColor
+import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -31,8 +31,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeuiandroidexperimentTheme {
-                LivingRoomScreen(roomInfo = RoomList.LIVING_ROOM.value)
+            ComposeUIAndroidExperimentTheme {
+                LivingRoomScreen(roomInfo = Rooms.LIVING_ROOM.value)
             }
         }
     }
@@ -57,7 +57,7 @@ fun Greeting() {
                 text = "See different Experiments"
             )
             Button(
-                colors = ButtonDefaults.buttonColors(containerColor = lightPrimaryColor),
+                colors = ButtonDefaults.buttonColors(containerColor = LightPrimaryColor),
                 onClick = { /*todo: add navigation to Living room */ }
             ) {
                 Text(text = stringResource(id = R.string.tracker_in_the_house_title))
@@ -69,7 +69,7 @@ fun Greeting() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    ComposeuiandroidexperimentTheme {
+    ComposeUIAndroidExperimentTheme {
         Greeting()
     }
 }
