@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Rooms
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.BedroomScreen
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.LivingRoomScreen
 import com.mnafis.compose_ui_android_experiment.ui.theme.ComposeUIAndroidExperimentTheme
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
@@ -32,7 +33,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeUIAndroidExperimentTheme {
-                LivingRoomScreen(roomInfo = Rooms.LIVING_ROOM.value)
+                BedroomScreen(
+                    rooms = Rooms.values().map { it.value },
+                    roomInfo = Rooms.BEDROOM.value
+                )
             }
         }
     }

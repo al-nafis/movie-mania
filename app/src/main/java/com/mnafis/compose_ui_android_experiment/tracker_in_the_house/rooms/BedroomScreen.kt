@@ -8,10 +8,12 @@ import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Room
 
 @Composable
 fun BedroomScreen(
+    rooms: List<Room>,
     roomInfo: Room
 ) {
     CreateRoom(
         background = R.drawable.bedroom,
+        rooms = rooms,
         roomInfo = roomInfo
     )
 }
@@ -19,5 +21,8 @@ fun BedroomScreen(
 @Composable
 @Preview
 fun PreviewBedroomScreen() {
-    BedroomScreen(Rooms.BEDROOM.value)
+    BedroomScreen(
+        rooms = Rooms.values().map { it.value },
+        roomInfo = Rooms.BEDROOM.value
+    )
 }
