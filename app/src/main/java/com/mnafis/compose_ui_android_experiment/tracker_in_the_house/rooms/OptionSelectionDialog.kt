@@ -50,7 +50,6 @@ fun ShirtSelectionDialog(
 
 @Composable
 fun RoomSelectionDialog(
-    currentRoom: Room,
     rooms: List<Room>,
     onRoomSelected: (option: Room) -> Unit,
     onDismissRequest: () -> Unit
@@ -62,17 +61,15 @@ fun RoomSelectionDialog(
             ) {
                 Text(text = stringResource(id = R.string.tracker_in_the_house_room_change_instruction))
                 rooms.forEach {
-                    if (it != currentRoom) {
-                        TextButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(containerColor = LightPrimaryDarkColor),
-                            onClick = {
-                                onRoomSelected(it)
-                                onDismissRequest()
-                            }
-                        ) {
-                            Text(text = it.name)
+                    TextButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(containerColor = LightPrimaryDarkColor),
+                        onClick = {
+                            onRoomSelected(it)
+                            onDismissRequest()
                         }
+                    ) {
+                        Text(text = it.name)
                     }
                 }
             }

@@ -14,38 +14,37 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mnafis.compose_ui_android_experiment.R
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.HouseManager
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Person
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Room
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Rooms
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Shirt
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
 import com.mnafis.compose_ui_android_experiment.ui.theme.TextStyles
 
 @Composable
 fun CreateRoom(
-    background: Int,
-    rooms: List<Room>,
-    roomInfo: Room
+    viewModel: BaseRoomViewModel
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painter = painterResource(id = background),
+                painter = painterResource(id = viewModel.background),
                 contentScale = ContentScale.Crop
             )
             .padding(Dimens.paddingMd)
     ) {
         var occupantsCountMessage by remember { mutableStateOf("") }
-        val occupantsCount = remember { mutableStateOf(roomInfo.occupants.size) }
-
+        var occupantsCount by remember { mutableStateOf(viewModel.roomInfo.occupants.size) }
         occupantsCountMessage = stringResource(
             R.string.tracker_in_the_house_occupants_count,
-            occupantsCount.value
+            occupantsCount
         )
+
         Text(
             style = TextStyles.TextTitle.value,
-            text = roomInfo.name
+            text = viewModel.roomInfo.name
         )
         Text(
             style = TextStyles.TextHeader.value,
@@ -57,25 +56,22 @@ fun CreateRoom(
         )
 
         DisplayOccupants(
-            rooms = rooms,
-            room = roomInfo,
-            totalOccupants = occupantsCount
+            viewModel = viewModel,
+            onRoomOccupantsUpdated = { occupantsCount = it }
         )
     }
 }
 
 @Composable
 fun DisplayOccupants(
-    rooms: List<Room>,
-    room: Room,
-    totalOccupants: MutableState<Int>
+    viewModel: BaseRoomViewModel,
+    onRoomOccupantsUpdated: (Int) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth(),
     ) {
-        items(room.occupants) { person ->
-            val peopleInCurrentRoom = remember { mutableStateOf(room.occupants) }
+        items(viewModel.roomInfo.occupants) { person ->
             Column(
                 modifier = Modifier
                     .padding(vertical = Dimens.paddingXXl)
@@ -90,16 +86,15 @@ fun DisplayOccupants(
                     modifier = Modifier
                 ) {
                     ShirtSelectionButton(
-                        room = room,
+                        room = viewModel.roomInfo,
                         person = person,
-                        peopleInCurrentRoom = peopleInCurrentRoom
+                        onShirtSelected = { viewModel.houseManager.changeShirt(person, it) }
                     )
                     RoomSelectionButton(
-                        rooms = rooms,
-                        currentRoom = room,
-                        totalOccupants = totalOccupants,
-                        person = person,
-                        peopleInCurrentRoom = peopleInCurrentRoom
+                        rooms = viewModel.houseManager.rooms,
+                        currentRoom = viewModel.roomInfo,
+                        onRoomOccupantsUpdated = onRoomOccupantsUpdated,
+                        onRoomSelected = { viewModel.houseManager.moveTo(person, it) }
                     )
                 }
             }
@@ -111,27 +106,23 @@ fun DisplayOccupants(
 fun RoomSelectionButton(
     rooms: List<Room>,
     currentRoom: Room,
-    person: Person,
-    peopleInCurrentRoom: MutableState<MutableList<Person>>,
-    totalOccupants: MutableState<Int>
+    onRoomSelected: (Room) -> Unit,
+    onRoomOccupantsUpdated: (Int) -> Unit
 ) {
-    var roomSelected by remember { mutableStateOf(false) }
-    if (roomSelected) {
+    var visible by remember { mutableStateOf(false) }
+    if (visible) {
         RoomSelectionDialog(
-            currentRoom = currentRoom,
-            rooms = rooms,
+            rooms = rooms.filterNot { it == currentRoom },
             onRoomSelected = { selectedRoom ->
-                currentRoom.occupants.remove(person)
-                selectedRoom.occupants.add(person)
-                totalOccupants.value = currentRoom.occupants.size
-                peopleInCurrentRoom.value = currentRoom.occupants
+                onRoomSelected(selectedRoom)
+                onRoomOccupantsUpdated(currentRoom.occupants.size)
             },
-            onDismissRequest = { roomSelected = false }
+            onDismissRequest = { visible = false }
         )
     }
     Button(
         colors = ButtonDefaults.buttonColors(containerColor = LightPrimaryColor),
-        onClick = { roomSelected = true }
+        onClick = { visible = true }
     ) {
         Text(text = stringResource(id = R.string.tracker_in_the_house_change_room))
     }
@@ -141,27 +132,21 @@ fun RoomSelectionButton(
 fun ShirtSelectionButton(
     room: Room,
     person: Person,
-    peopleInCurrentRoom: MutableState<MutableList<Person>>
+    onShirtSelected: (Shirt) -> Unit
 ) {
-    var shirtSelected by remember { mutableStateOf(false) }
-
-    if (shirtSelected) {
+    var visible by remember { mutableStateOf(false) }
+    if (visible) {
         ShirtSelectionDialog(
             room.availableShirts,
-            onShirtSelected = {
-                room.availableShirts.add(person.shirt)
-                room.availableShirts.remove(it)
-                person.shirt = it
-                peopleInCurrentRoom.value = room.occupants
-            },
-            onDismissRequest = { shirtSelected = false }
+            onShirtSelected = onShirtSelected,
+            onDismissRequest = { visible = false }
         )
     }
     Button(
         modifier = Modifier
             .padding(end = Dimens.paddingLg),
         colors = ButtonDefaults.buttonColors(containerColor = person.shirt.colorValue),
-        onClick = { shirtSelected = true }
+        onClick = { visible = true }
     ) {
         Text(text = person.shirt.colorName)
     }
@@ -170,9 +155,5 @@ fun ShirtSelectionButton(
 @Composable
 @Preview
 fun PreviewCreateRoom() {
-    CreateRoom(
-        rooms = Rooms.values().map { it.value },
-        background = R.drawable.bedroom,
-        roomInfo = Rooms.BEDROOM.value
-    )
+    CreateRoom(DiningRoomViewModel(HouseManager()))
 }
