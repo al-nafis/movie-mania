@@ -14,8 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.window.Dialog
 import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Room
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Rooms
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Shirt
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.createRooms
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryDarkColor
 
@@ -50,8 +50,8 @@ fun ShirtSelectionDialog(
 
 @Composable
 fun RoomSelectionDialog(
-    rooms: List<Room>,
-    onRoomSelected: (option: Room) -> Unit,
+    rooms: List<String>,
+    onRoomSelected: (option: String) -> Unit,
     onDismissRequest: () -> Unit
 ) {
     Dialog(onDismissRequest = onDismissRequest) {
@@ -69,20 +69,10 @@ fun RoomSelectionDialog(
                             onDismissRequest()
                         }
                     ) {
-                        Text(text = it.name)
+                        Text(text = it)
                     }
                 }
             }
         }
     }
-}
-
-@Composable
-@Preview
-fun PreviewOptionSelectionDialog() {
-    ShirtSelectionDialog(
-        list = Rooms.BEDROOM.value.availableShirts,
-        onShirtSelected = {},
-        onDismissRequest = {}
-    )
 }

@@ -17,6 +17,7 @@ import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.HouseManager
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Person
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Room
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.RoomName
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Shirt
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
@@ -24,13 +25,13 @@ import com.mnafis.compose_ui_android_experiment.ui.theme.TextStyles
 
 @Composable
 fun CreateRoom(
-    viewModel: BaseRoomViewModel
+    viewModel: RoomViewModel
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painter = painterResource(id = viewModel.background),
+                painter = painterResource(id = viewModel.roomInfo.background),
                 contentScale = ContentScale.Crop
             )
             .padding(Dimens.paddingMd)
@@ -64,7 +65,7 @@ fun CreateRoom(
 
 @Composable
 fun DisplayOccupants(
-    viewModel: BaseRoomViewModel,
+    viewModel: RoomViewModel,
     onRoomOccupantsUpdated: (Int) -> Unit
 ) {
     LazyColumn(
@@ -91,7 +92,7 @@ fun DisplayOccupants(
                         onShirtSelected = { viewModel.houseManager.changeShirt(person, it) }
                     )
                     RoomSelectionButton(
-                        rooms = viewModel.houseManager.rooms,
+                        rooms = viewModel.houseManager.rooms.values.map { it.name },
                         currentRoom = viewModel.roomInfo,
                         onRoomOccupantsUpdated = onRoomOccupantsUpdated,
                         onRoomSelected = { viewModel.houseManager.moveTo(person, it) }
@@ -104,15 +105,15 @@ fun DisplayOccupants(
 
 @Composable
 fun RoomSelectionButton(
-    rooms: List<Room>,
+    rooms: List<String>,
     currentRoom: Room,
-    onRoomSelected: (Room) -> Unit,
+    onRoomSelected: (String) -> Unit,
     onRoomOccupantsUpdated: (Int) -> Unit
 ) {
     var visible by remember { mutableStateOf(false) }
     if (visible) {
         RoomSelectionDialog(
-            rooms = rooms.filterNot { it == currentRoom },
+            rooms = rooms.filterNot { it == currentRoom.name },
             onRoomSelected = { selectedRoom ->
                 onRoomSelected(selectedRoom)
                 onRoomOccupantsUpdated(currentRoom.occupants.size)
@@ -155,5 +156,12 @@ fun ShirtSelectionButton(
 @Composable
 @Preview
 fun PreviewCreateRoom() {
-    CreateRoom(DiningRoomViewModel(HouseManager()))
+    HouseManager().apply {
+        CreateRoom(
+            RoomViewModel(
+                roomInfo = rooms[RoomName.LIVING_ROOM.value]!!,
+                houseManager = this
+            )
+        )
+    }
 }

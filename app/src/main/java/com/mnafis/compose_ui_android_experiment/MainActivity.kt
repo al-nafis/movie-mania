@@ -2,9 +2,9 @@ package com.mnafis.compose_ui_android_experiment
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,8 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.BedroomViewModel
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.HouseManager
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.RoomName
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.CreateRoom
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.RoomViewModel
 import com.mnafis.compose_ui_android_experiment.ui.theme.ComposeUIAndroidExperimentTheme
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
@@ -29,13 +31,19 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var sharedPref: SharedPreferences
 
-    private val viewModel: BedroomViewModel by viewModels()
+    @Inject
+    lateinit var houseManager: HouseManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeUIAndroidExperimentTheme {
-                CreateRoom(viewModel = viewModel)
+                CreateRoom(
+                    viewModel = RoomViewModel(
+                        roomInfo = houseManager.rooms[RoomName.DINING_ROOM.value]!!,
+                        houseManager = houseManager
+                    )
+                )
             }
         }
     }

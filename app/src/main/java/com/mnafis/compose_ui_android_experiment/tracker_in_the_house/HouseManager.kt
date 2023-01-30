@@ -2,26 +2,28 @@ package com.mnafis.compose_ui_android_experiment.tracker_in_the_house
 
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Person
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Room
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Rooms
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.Shirt
+import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.createRooms
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class HouseManager @Inject constructor() {
 
     //todo: This method will get the room info from local storage
-    val rooms = Rooms.values().map { it.value }
+    val rooms: Map<String, Room> = createRooms()
 
-    fun moveTo(person: Person, room: Room) {
-        rooms.forEach { currentRoom ->
+    fun moveTo(person: Person, room: String) {
+        rooms.values.forEach { currentRoom ->
             if (currentRoom.occupants.any { it.name == person.name }) {
                 currentRoom.occupants.remove(person)
-                room.occupants.add(person)
+                rooms[room]?.occupants?.add(person)
             }
         }
     }
 
     fun changeShirt(person: Person, shirt: Shirt) {
-        rooms.forEach { room ->
+        rooms.values.forEach { room ->
             if (room.occupants.any { it.name == person.name }) {
                 room.availableShirts.add(person.shirt)
                 room.availableShirts.remove(shirt)
