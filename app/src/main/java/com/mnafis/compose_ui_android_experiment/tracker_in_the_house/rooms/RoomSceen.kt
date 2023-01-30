@@ -24,7 +24,7 @@ import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
 import com.mnafis.compose_ui_android_experiment.ui.theme.TextStyles
 
 @Composable
-fun CreateRoom(
+fun RoomScreen(
     viewModel: RoomViewModel
 ) {
     Column(
@@ -156,12 +156,10 @@ fun ShirtSelectionButton(
 @Composable
 @Preview
 fun PreviewCreateRoom() {
-    HouseManager().apply {
-        CreateRoom(
-            RoomViewModel(
-                roomInfo = rooms[RoomName.LIVING_ROOM.value]!!,
-                houseManager = this
+        RoomScreen(
+            viewModel = RoomViewModel(
+                houseManager = HouseManager,
+                roomInfo = HouseManager.rooms[RoomName.LIVING_ROOM.value]!!
             )
         )
-    }
 }

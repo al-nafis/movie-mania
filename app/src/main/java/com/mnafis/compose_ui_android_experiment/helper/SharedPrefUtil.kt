@@ -1,4 +1,4 @@
-package com.mnafis.compose_ui_android_experiment
+package com.mnafis.compose_ui_android_experiment.helper
 
 import android.content.SharedPreferences
 

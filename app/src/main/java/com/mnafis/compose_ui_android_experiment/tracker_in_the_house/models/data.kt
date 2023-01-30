@@ -1,5 +1,6 @@
 package com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models
 
+import android.util.Log
 import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.ui.theme.*
 import java.util.*
@@ -21,13 +22,12 @@ private val residents = mutableListOf(
 )
 
 fun createRooms(): Map<String, Room> {
-    val shirts = getShirts().apply { shuffle() }
-    val shirtsQueue: Queue<Shirt> = LinkedList(shirts)
+    val shirts = getShirts()
+    val shirtsQueue: Queue<Shirt> = LinkedList(shirts).apply { shuffle() }
     val people = mutableListOf<Person>()
     residents.forEach { person ->
         shirtsQueue.poll()?.let { people.add(Person(name = person, shirt = it)) }
     }
-    people.shuffle()
     return assignPeopleAndShirts(people, shirtsQueue)
 }
 
@@ -43,7 +43,7 @@ private fun getShirts() = mutableListOf(
     Shirt(colorName = "Cyan", colorValue = ColorCyan)
 )
 
-private fun getRandomNumber(limit: Int) = Random.nextInt(0, limit)
+private fun getRandomNumber(limit: Int) = (0 until limit).random()
 
 private fun assignPeopleAndShirts(
     people: MutableList<Person>,
@@ -54,11 +54,17 @@ private fun assignPeopleAndShirts(
     val rooms = mutableMapOf<String, Room>()
     val peopleQueue: Queue<Person> = LinkedList(people)
     while (peopleQueue.isNotEmpty()) {
-        peopleQueue.poll()?.let { tempList[getRandomNumber(tempList.size)].occupants.add(it) }
+        val ran = getRandomNumber(tempList.size)
+        Log.d("ABID", "room -- $ran")
+        peopleQueue.poll()?.let { tempList[ran].occupants.add(it) }
     }
+    Log.d("ABID", ".......................")
     while (shirtsQueue.isNotEmpty()) {
-        shirtsQueue.poll()?.let { tempList[getRandomNumber(tempList.size)].availableShirts.add(it) }
+        val ran = getRandomNumber(tempList.size)
+        Log.d("ABID", "shirt -- $ran")
+        shirtsQueue.poll()?.let { tempList[ran].availableShirts.add(it) }
     }
+    Log.d("ABID", ".......................")
 
     tempList.forEach { rooms[it.name] = it }
     return rooms

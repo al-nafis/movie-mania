@@ -7,8 +7,8 @@ import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.models.crea
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class HouseManager @Inject constructor() {
+
+object HouseManager {
 
     //todo: This method will get the room info from local storage
     val rooms: Map<String, Room> = createRooms()
