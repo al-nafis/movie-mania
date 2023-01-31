@@ -4,7 +4,6 @@ import android.util.Log
 import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.ui.theme.*
 import java.util.*
-import kotlin.random.Random
 
 
 enum class RoomName(val value: String, val background: Int) {

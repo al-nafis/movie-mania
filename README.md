@@ -17,7 +17,21 @@ Living Room  ||  Dining Room  ||  Bedroom
 Adam  ||  Brook  ||  Connor  ||  Delilah  ||  Ethan
 
 ### Shirts
- ||  Red  ||  Blue  ||  Green  ||  Yellow  ||  Gray  ||  Black  ||  Dark Gray  ||  Magenta  ||  Cyan 
+Red  ||  Blue  ||  Green  ||  Yellow  ||  Gray  ||  Black  ||  Dark Gray  ||  Magenta  ||  Cyan 
 
 ### Current Issues
 - Random number not randomly generating as recomposition happens and somehow the random number has the same pattern on the 2nd time
+
+
+## Movie Mania
+This experiment make api call using REST API and displays them on the screen.
+You can search by movie title or by key words. From the search result, you can choose a specific movie to get detailed information.
+
+### Used Tools
+- Compose Navigation
+- Coroutines
+- Retrofit
+- Hilt
+
+### Screens
+Main Screen  ||  Detail Screen

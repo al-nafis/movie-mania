@@ -21,7 +21,7 @@ fun MainScreen(navController: NavHostController) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
-            .padding(Dimens.paddingXl),
+            .padding(Dimens.screenPadding),
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
@@ -39,6 +39,12 @@ fun MainScreen(navController: NavHostController) {
                 onClick = { navController.navigate(Experiment.TRACKER_IN_THE_HOUSE.name) }
             ) {
                 Text(text = stringResource(id = R.string.tracker_in_the_house_title))
+            }
+            Button(
+                colors = ButtonDefaults.buttonColors(containerColor = LightPrimaryColor),
+                onClick = { navController.navigate(Experiment.MOVIE_MANIA.name) }
+            ) {
+                Text(text = stringResource(id = R.string.movie_mania_title))
             }
         }
     }

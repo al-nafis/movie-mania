@@ -34,7 +34,7 @@ fun RoomScreen(
                 painter = painterResource(id = viewModel.roomInfo.background),
                 contentScale = ContentScale.Crop
             )
-            .padding(Dimens.paddingMd)
+            .padding(Dimens.screenPadding)
     ) {
         var occupantsCountMessage by remember { mutableStateOf("") }
         var occupantsCount by remember { mutableStateOf(viewModel.roomInfo.occupants.size) }
