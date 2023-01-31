@@ -26,6 +26,7 @@ Red  ||  Blue  ||  Green  ||  Yellow  ||  Gray  ||  Black  ||  Dark Gray  ||  Ma
 ## Movie Mania
 This experiment make api call using REST API and displays them on the screen.
 You can search by movie title or by key words. From the search result, you can choose a specific movie to get detailed information.
+You can save any movie you like in the local storage.
 
 ### Used Tools
 - Compose Navigation
@@ -34,4 +35,4 @@ You can search by movie title or by key words. From the search result, you can c
 - Hilt
 
 ### Screens
-Main Screen  ||  Detail Screen
+Main Screen  ||  Search Screen  ||  Detail Screen

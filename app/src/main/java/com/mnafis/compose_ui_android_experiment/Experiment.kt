@@ -3,8 +3,7 @@ package com.mnafis.compose_ui_android_experiment
 import androidx.compose.runtime.Composable
 import com.mnafis.compose_ui_android_experiment.Experiment.MOVIE_MANIA
 import com.mnafis.compose_ui_android_experiment.Experiment.TRACKER_IN_THE_HOUSE
-import com.mnafis.compose_ui_android_experiment.movie_mania.MovieManiaMainScreen
-import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.HouseManager
+import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaMainScreen
 import com.mnafis.compose_ui_android_experiment.tracker_in_the_house.rooms.TrackerInTheHouse
 
 enum class Experiment {
@@ -17,7 +16,7 @@ enum class Experiment {
 fun LaunchExperiment(experiment: Experiment) {
     when (experiment) {
         TRACKER_IN_THE_HOUSE -> TrackerInTheHouse()
-        MOVIE_MANIA -> MovieManiaMainScreen()
+        MOVIE_MANIA -> MovieMania()
         else -> {}
     }
 }
