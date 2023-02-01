@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
@@ -33,6 +34,10 @@ fun MainScreen(navController: NavHostController) {
                     .padding(vertical = Dimens.paddingLg),
                 fontSize = Dimens.headerFontSize,
                 text = "See Different Experiments"
+            )
+            Divider(
+                modifier = Modifier.padding(Dimens.paddingXXXl),
+                color = Color.Transparent
             )
             Button(
                 colors = ButtonDefaults.buttonColors(containerColor = LightPrimaryColor),

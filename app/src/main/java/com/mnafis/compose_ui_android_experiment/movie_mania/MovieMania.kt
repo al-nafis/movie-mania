@@ -1,6 +1,5 @@
-package com.mnafis.compose_ui_android_experiment
+package com.mnafis.compose_ui_android_experiment.movie_mania
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable

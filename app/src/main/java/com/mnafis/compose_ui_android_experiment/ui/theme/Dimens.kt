@@ -12,4 +12,5 @@ object Dimens {
     val paddingXl = 16.dp
     val screenPadding = 16.dp
     val paddingXXl = 24.dp
+    val paddingXXXl = 30.dp
 }

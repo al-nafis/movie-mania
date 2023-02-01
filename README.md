@@ -36,3 +36,6 @@ You can save any movie you like in the local storage.
 
 ### Screens
 Main Screen  ||  Search Screen  ||  Detail Screen
+
+### Current Issues
+- Offline crash on movie list screen after some time
