@@ -1,10 +1,9 @@
-package com.mnafis.compose_ui_android_experiment.movie_mania.screens
+package com.mnafis.compose_ui_android_experiment.movie_mania.screens.main
 
 import android.util.Log
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import com.mnafis.compose_ui_android_experiment.movie_mania.MovieManiaBaseViewModel
+import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaScreen
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.MovieManiaManager
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.MovieSearchException
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.Movie

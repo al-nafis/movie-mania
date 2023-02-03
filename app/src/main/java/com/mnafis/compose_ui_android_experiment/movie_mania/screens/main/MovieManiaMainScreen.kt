@@ -1,4 +1,4 @@
-package com.mnafis.compose_ui_android_experiment.movie_mania.screens
+package com.mnafis.compose_ui_android_experiment.movie_mania.screens.main
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,7 +59,7 @@ fun MovieManiaMainScreen(
         LazyColumn(
             modifier = Modifier
                 .padding(padding)
-                .padding(Dimens.screenPadding),
+                .padding(start = Dimens.screenPadding, end = Dimens.screenPadding, top = Dimens.screenPadding),
             verticalArrangement = Arrangement.spacedBy(Dimens.itemPadding)
         ) {
             items(items = movies) {
@@ -73,6 +74,14 @@ fun MovieManiaMainScreen(
                 item {
                     Text(text = stringResource(id = R.string.movie_mania_selected_movies_empty_list_message))
                 }
+            }
+
+            // this space is to display the last list item so the floating button does not overlap on it
+            item {
+                Divider(
+                    modifier = Modifier.height(60.dp),
+                    color = Color.Transparent
+                )
             }
         }
     }

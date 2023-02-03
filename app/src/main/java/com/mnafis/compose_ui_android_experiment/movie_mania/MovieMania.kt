@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaDetailsScreen
-import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaMainScreen
 import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaScreen.*
-import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaSearchScreen
+import com.mnafis.compose_ui_android_experiment.movie_mania.screens.details.MovieManiaDetailsScreen
+import com.mnafis.compose_ui_android_experiment.movie_mania.screens.main.MovieManiaMainScreen
+import com.mnafis.compose_ui_android_experiment.movie_mania.screens.search.MovieManiaSearchScreen
 import com.mnafis.compose_ui_android_experiment.ui.theme.ComposeUIAndroidExperimentTheme
 
 @Composable
