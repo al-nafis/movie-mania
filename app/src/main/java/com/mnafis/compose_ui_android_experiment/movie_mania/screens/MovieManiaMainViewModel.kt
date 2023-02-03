@@ -2,12 +2,16 @@ package com.mnafis.compose_ui_android_experiment.movie_mania.screens
 
 import android.util.Log
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import com.mnafis.compose_ui_android_experiment.movie_mania.MovieManiaBaseViewModel
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.MovieManiaManager
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.MovieSearchException
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,16 +20,18 @@ class MovieManiaMainViewModel @Inject constructor(
     private val movieManiaManager: MovieManiaManager
 ) : MovieManiaBaseViewModel() {
 
-    override val screenName = "Movie Mania"
+    private val movies = MutableStateFlow(emptyList<Movie>())
+    override val screenName = MovieManiaScreen.MAIN_SCREEN.screenName
 
-    fun searchMovieByKeyWords(keyWords: String, state: MutableState<List<Movie>>) {
+    fun searchMovieByKeyWords(keyWords: String): StateFlow<List<Movie>> {
         viewModelScope.launch {
             try {
-                state.value = movieManiaManager.searchByKeyWords(keyWords)
+                movies.value = movieManiaManager.searchByKeyWords(keyWords)
             } catch (e: MovieSearchException) {
                 // todo: update ui to display message
                 Log.d("ABID", e.errorMessage)
             }
         }
+        return movies.asStateFlow()
     }
 }

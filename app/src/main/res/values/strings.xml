@@ -12,4 +12,8 @@
 
     <!-- Movie Mania -->
     <string name="movie_mania_title">Movie Mania</string>
+    <string name="movie_mania_add_movie_button">Add Movie</string>
+    <string name="movie_mania_selected_movies_empty_list_message">No Movies on the list. Click on the Add Movie button to add a movie</string>
+    <string name="movie_mania_add_movie_card_item_release_year">Release Year: %1$s</string>
+    <string name="movie_mania_add_movie_card_item_image_content_description">movie poster</string>
 </resources>
