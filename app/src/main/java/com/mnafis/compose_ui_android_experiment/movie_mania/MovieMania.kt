@@ -27,7 +27,10 @@ fun MovieMania() {
                 )
             }
             composable(route = SEARCH_SCREEN.screenName) {
-                MovieManiaSearchScreen { navController.navigate(route = "${DETAIL_SCREEN.screenName}/$it") }
+                MovieManiaSearchScreen(
+                    onClickNavigate = { navController.navigate(route = "${DETAIL_SCREEN.screenName}/$it") },
+                    onBackPressed = { navController.navigateUp() }
+                )
             }
             composable(
                 route = "${DETAIL_SCREEN.screenName}/{${MovieManiaDetailsViewModel.SAVED_MOVIE_KEY}}",

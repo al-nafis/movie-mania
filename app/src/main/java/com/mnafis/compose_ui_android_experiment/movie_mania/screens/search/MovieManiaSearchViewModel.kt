@@ -28,10 +28,7 @@ class MovieManiaSearchViewModel @Inject constructor(
             viewModelScope.launch { // todo: test if calling this method creates multiple scopes by logging the list with a counter
                 try {
                     _movies.value = movieManiaManager.searchByKeyWords(keyWords)
-                } catch (e: MovieSearchException) {
-                    // todo: update ui to display message
-                    Log.d("ABID", e.errorMessage)
-                }
+                } catch (e: MovieSearchException) {}
             }
         }
     }

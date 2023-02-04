@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
@@ -29,7 +30,8 @@ import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieManiaSearchScreen(
-    onClickNavigate: (id: String) -> Unit
+    onClickNavigate: (id: String) -> Unit,
+    onBackPressed: () -> Unit
 ) {
     val viewModel: MovieManiaSearchViewModel = hiltViewModel()
     val movies by viewModel.movies.collectAsState()
@@ -43,7 +45,18 @@ fun MovieManiaSearchScreen(
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = LightPrimaryColor,
                     titleContentColor = ColorWhite
-                )
+                ),
+                navigationIcon = {
+                    IconButton(
+                        colors = IconButtonDefaults.iconButtonColors(contentColor = ColorWhite),
+                        onClick = onBackPressed
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.movie_mania_back_button_content_description)
+                        )
+                    }
+                }
             )
         }
     ) { padding ->
@@ -57,10 +70,7 @@ fun MovieManiaSearchScreen(
                     top = Dimens.screenPadding
                 )
         ) {
-            val state: MutableState<TextFieldValue> =
-                remember { mutableStateOf(TextFieldValue("")) }
-
-            SearchBar(state) {
+            SearchBar {
                 viewModel.searchMovieByKeyWords(it.text)
             }
 
@@ -84,9 +94,10 @@ fun MovieManiaSearchScreen(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun SearchBar(
-    state: MutableState<TextFieldValue>,
     onTextChanged: (TextFieldValue) -> Unit
 ) {
+    val state: MutableState<TextFieldValue> =
+        remember { mutableStateOf(TextFieldValue("")) }
     val keyboard = LocalSoftwareKeyboardController.current
     TextField(
         placeholder = { Text(text = "Search") },

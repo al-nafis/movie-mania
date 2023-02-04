@@ -30,10 +30,7 @@ class MovieManiaDetailsViewModel @Inject constructor(
             viewModelScope.launch {
                 try {
                     movie.value = movieManiaManager.searchById(id)
-                } catch (e: MovieSearchException) {
-                    // todo: update ui to display message
-                    Log.d("ABID", e.errorMessage)
-                }
+                } catch (e: MovieSearchException) {}
             }
         }
         return movie.asStateFlow()

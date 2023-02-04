@@ -12,6 +12,7 @@
 
     <!-- Movie Mania -->
     <string name="movie_mania_title">Movie Mania</string>
+    <string name="movie_mania_back_button_content_description">Back</string>
     <string name="movie_mania_add_movie_button">Add Movie</string>
     <string name="movie_mania_selected_movies_empty_list_message">No Movies on the list. Click on the Add Movie button to add a movie</string>
     <string name="movie_mania_search_instruction_message">Use the search bar to find movies</string>
@@ -38,5 +39,6 @@
     <string name="movie_mania_add_movie_details_box_office">BoxOffice: </string>
     <string name="movie_mania_add_movie_details_button_add">Add to List</string>
     <string name="movie_mania_add_movie_details_button_remove">Remove from List</string>
+    <string name="movie_mania_add_movie_details_movie_poster_content_description">movie poster</string>
 
 </resources>

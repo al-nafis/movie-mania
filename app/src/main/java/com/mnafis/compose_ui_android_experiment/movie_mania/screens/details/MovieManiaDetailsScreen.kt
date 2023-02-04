@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
@@ -51,7 +52,13 @@ private fun DisplayMovieDetails(
             .fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text(text = movie?.title ?: MovieManiaScreen.DETAIL_SCREEN.screenName) },
+                title = {
+                    Text(
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        text = MovieManiaScreen.DETAIL_SCREEN.screenName
+                    )
+                },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = LightPrimaryColor,
                     titleContentColor = ColorWhite
@@ -63,10 +70,10 @@ private fun DisplayMovieDetails(
                     ) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(id = R.string.movie_mania_back_button_content_description)
                         )
                     }
-                },
+                }
             )
         },
     ) { padding ->
@@ -112,7 +119,7 @@ private fun MovieHeaderPortion(movie: MovieDetails) {
             AsyncImage(
                 modifier = Modifier.fillMaxSize(),
                 model = movie.poster,
-                contentDescription = "poster",
+                contentDescription = stringResource(id = R.string.movie_mania_add_movie_details_movie_poster_content_description),
                 contentScale = ContentScale.FillBounds,
                 alignment = Alignment.Center
             )
@@ -176,6 +183,8 @@ private fun FavoriteButton(isListed: Boolean, onClick: () -> Unit) {
 
 @Composable
 private fun MovieDescriptionPortion(movie: MovieDetails) {
+    Text(text = movie.title, style = TextStyles.TextHeader.value)
+
     DisplayFieldNextLine(
         header = stringResource(id = R.string.movie_mania_add_movie_details_year),
         value = movie.year
@@ -213,7 +222,8 @@ private fun MovieDescriptionPortion(movie: MovieDetails) {
 @Composable
 private fun DisplayFieldSideBySide(
     header: String,
-    value: String) {
+    value: String
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -234,8 +244,9 @@ private fun DisplayFieldSideBySide(
 
 @Composable
 private fun DisplayFieldNextLine(
-    header: String = "",
-    value: String) {
+    header: String,
+    value: String
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

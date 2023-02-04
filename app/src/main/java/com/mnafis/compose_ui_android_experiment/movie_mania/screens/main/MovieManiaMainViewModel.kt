@@ -26,10 +26,7 @@ class MovieManiaMainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 movies.value = movieManiaManager.searchByKeyWords(keyWords)
-            } catch (e: MovieSearchException) {
-                // todo: update ui to display message
-                Log.d("ABID", e.errorMessage)
-            }
+            } catch (e: MovieSearchException) {}
         }
         return movies.asStateFlow()
     }
