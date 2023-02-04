@@ -1,5 +1,6 @@
 package com.mnafis.compose_ui_android_experiment.movie_mania.service
 
+import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieDetails
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieListResponse
 import retrofit2.Response
 import retrofit2.http.POST
@@ -16,8 +17,6 @@ interface OmdbService {
     @POST("/")
     suspend fun searchByMovieDetail(
         @Query("apikey") key: String,
-        @Query("t") title: String,
-        @Query("y") year: String,
-        @Query("type") type: String,
-    ): Response<MovieListResponse>
+        @Query("i") id: String
+    ): Response<MovieDetails>
 }

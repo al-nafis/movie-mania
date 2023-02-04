@@ -10,6 +10,7 @@ object Dimens {
     val headerFontSize = 24.sp
 
     // padding
+    val paddingSm = 4.dp
     val paddingMd = 8.dp
     val paddingLg = 12.dp
     val paddingXl = 16.dp

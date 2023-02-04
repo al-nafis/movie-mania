@@ -1,6 +1,7 @@
 package com.mnafis.compose_ui_android_experiment.movie_mania.service
 
 import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.Movie
+import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieDetails
 import javax.inject.Inject
 
 class MovieManiaManager @Inject constructor(
@@ -21,6 +22,18 @@ class MovieManiaManager @Inject constructor(
         )
         if (response.isSuccessful) {
             return response.body()?.list ?: emptyList()
+        } else {
+            throw MovieSearchException(errorMessage = response.errorBody()?.toString() ?: "")
+        }
+    }
+
+    suspend fun searchById(id: String): MovieDetails? {
+        val response = service.searchByMovieDetail(
+            key = apiKey,
+            id = id
+        )
+        if (response.isSuccessful) {
+            return response.body()
         } else {
             throw MovieSearchException(errorMessage = response.errorBody()?.toString() ?: "")
         }
