@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,7 +21,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.movie_mania.screens.custom_views.MovieCard
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.Movie
 import com.mnafis.compose_ui_android_experiment.ui.theme.ColorWhite
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor

@@ -1,7 +1,8 @@
 package com.mnafis.compose_ui_android_experiment.movie_mania.service
 
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.Movie
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieDetails
+import com.mnafis.compose_ui_android_experiment.movie_mania.models.Movie
+import com.mnafis.compose_ui_android_experiment.movie_mania.models.MovieDetails
+import com.mnafis.compose_ui_android_experiment.movie_mania.models.MovieSearchException
 import javax.inject.Inject
 
 class MovieManiaManager @Inject constructor(
@@ -39,7 +40,3 @@ class MovieManiaManager @Inject constructor(
         }
     }
 }
-
-data class MovieSearchException(
-    val errorMessage: String
-) : Exception(errorMessage)

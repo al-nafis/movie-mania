@@ -1,4 +1,4 @@
-package com.mnafis.compose_ui_android_experiment.movie_mania.service.models
+package com.mnafis.compose_ui_android_experiment.movie_mania.models
 
 import com.google.gson.annotations.SerializedName
 

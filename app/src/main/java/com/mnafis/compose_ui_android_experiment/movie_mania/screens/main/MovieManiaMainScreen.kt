@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.movie_mania.screens.custom_views.MovieCard
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.Movie
 import com.mnafis.compose_ui_android_experiment.ui.theme.ColorWhite
 import com.mnafis.compose_ui_android_experiment.ui.theme.Dimens
 import com.mnafis.compose_ui_android_experiment.ui.theme.LightPrimaryColor
@@ -30,7 +29,7 @@ fun MovieManiaMainScreen(
     onClickFloatingButton: () -> Unit
 ) {
     val viewModel: MovieManiaMainViewModel = hiltViewModel()
-    val movies by viewModel.searchMovieByKeyWords("aaa").collectAsState() // todo: this will be replace by repository call
+    val movies by viewModel.getMovies().collectAsState()
 
     Scaffold(
         modifier = Modifier
@@ -93,7 +92,6 @@ fun MovieManiaMainScreen(
         }
     }
 }
-
 
 
 @Composable

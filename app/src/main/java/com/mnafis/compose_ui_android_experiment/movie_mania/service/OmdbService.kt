@@ -1,7 +1,7 @@
 package com.mnafis.compose_ui_android_experiment.movie_mania.service
 
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieDetails
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieListResponse
+import com.mnafis.compose_ui_android_experiment.movie_mania.models.MovieDetails
+import com.mnafis.compose_ui_android_experiment.movie_mania.models.MovieListResponse
 import retrofit2.Response
 import retrofit2.http.POST
 import retrofit2.http.Query

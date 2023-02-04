@@ -16,7 +16,7 @@
     <string name="movie_mania_add_movie_button">Add Movie</string>
     <string name="movie_mania_selected_movies_empty_list_message">No Movies on the list. Click on the Add Movie button to add a movie</string>
     <string name="movie_mania_search_instruction_message">Use the search bar to find movies</string>
-    <string name="movie_mania_add_movie_card_item_release_year">Release Year: %1$s</string>
+    <string name="movie_mania_add_movie_card_item_release_year">Released: %1$s</string>
     <string name="movie_mania_add_movie_card_item_image_content_description">movie poster</string>
     <string name="movie_mania_add_movie_details_no_response_message">Something is wrong. Please try again.</string>
     <string name="movie_mania_add_movie_details_title">Title: </string>

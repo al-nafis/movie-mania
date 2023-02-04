@@ -19,7 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.mnafis.compose_ui_android_experiment.R
 import com.mnafis.compose_ui_android_experiment.movie_mania.screens.MovieManiaScreen
-import com.mnafis.compose_ui_android_experiment.movie_mania.service.models.MovieDetails
+import com.mnafis.compose_ui_android_experiment.movie_mania.models.MovieDetails
 import com.mnafis.compose_ui_android_experiment.ui.theme.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -30,10 +30,12 @@ fun MovieManiaDetailsScreen(
 ) {
     val viewModel: MovieManiaDetailsViewModel = hiltViewModel()
     val movie: MovieDetails? by viewModel.loadMovie(id = imdbId).collectAsState()
+    val isMovieListed: Boolean by viewModel.isMovieListed.collectAsState()
 
     DisplayMovieDetails(
         movie = movie,
         onBackPressed = onBackPressed,
+        isMovieListed = isMovieListed,
         shouldAddOrRemove = {
             viewModel.addOrRemoveMovie(it)
         }
@@ -44,6 +46,7 @@ fun MovieManiaDetailsScreen(
 @Composable
 private fun DisplayMovieDetails(
     movie: MovieDetails?,
+    isMovieListed: Boolean,
     onBackPressed: () -> Unit,
     shouldAddOrRemove: (Boolean) -> Unit
 ) {
@@ -89,12 +92,10 @@ private fun DisplayMovieDetails(
             verticalArrangement = Arrangement.spacedBy(Dimens.itemPadding)
         ) {
             movie?.let {
-                val isListed: MutableStateFlow<Boolean> = MutableStateFlow(false)
                 item { MovieHeaderPortion(it) }
                 item {
-                    val isMovieListed: Boolean by isListed.collectAsState()
                     FavoriteButton(isMovieListed) {
-                        shouldAddOrRemove(!isListed.value)
+                        shouldAddOrRemove(!isMovieListed)
                     }
                 }
                 item { MovieDescriptionPortion(it) }
@@ -289,6 +290,7 @@ fun DisplayMovieDetails() {
             imdbID = "tt0169547",
             boxOffice = "$130,096,601"
         ),
+        isMovieListed = true,
         onBackPressed = {},
         shouldAddOrRemove = {}
     )
