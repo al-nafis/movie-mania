@@ -29,10 +29,12 @@ You can search by movie title or by key words. From the search result, you can c
 You can save any movie you like in the local storage.
 
 ### Used Tools
+- Jetpack Compose
 - Compose Navigation
 - Coroutines
 - Retrofit
 - Hilt
+- Room Database
 
 ### Screens
 Main Screen  ||  Search Screen  ||  Detail Screen
@@ -40,3 +42,8 @@ Main Screen  ||  Search Screen  ||  Detail Screen
 ### Current Issues
 - Offline crash on movie list screen after some time
 - handle backstack navigation
+- add image place holder
+- handle loading 
+
+## Next Step
+segregate two experiments into two different project
