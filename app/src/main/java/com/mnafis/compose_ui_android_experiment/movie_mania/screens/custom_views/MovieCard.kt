@@ -25,7 +25,7 @@ fun MovieCard(
 ) {
     Card(
         modifier = Modifier
-            .height(100.dp)
+            .height(Dimens.thumbnailImageHeight)
             .clickable(onClick = onClick)
     ) {
         Row {
@@ -35,6 +35,7 @@ fun MovieCard(
                     .fillMaxHeight()
             ) {
                 AsyncImage(
+                    modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.FillBounds,
                     alignment = Alignment.Center,
                     model = imageUrl,

@@ -38,4 +38,8 @@ class MovieManiaDetailsViewModel @Inject constructor(
         }
         return movie.asStateFlow()
     }
+
+    fun addOrRemoveMovie(shouldAdd: Boolean) {
+
+    }
 }

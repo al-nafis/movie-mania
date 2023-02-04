@@ -17,4 +17,26 @@
     <string name="movie_mania_search_instruction_message">Use the search bar to find movies</string>
     <string name="movie_mania_add_movie_card_item_release_year">Release Year: %1$s</string>
     <string name="movie_mania_add_movie_card_item_image_content_description">movie poster</string>
+    <string name="movie_mania_add_movie_details_no_response_message">Something is wrong. Please try again.</string>
+    <string name="movie_mania_add_movie_details_title">Title: </string>
+    <string name="movie_mania_add_movie_details_year">Year: </string>
+    <string name="movie_mania_add_movie_details_rated">Rated: </string>
+    <string name="movie_mania_add_movie_details_runtime">Runtime: </string>
+    <string name="movie_mania_add_movie_details_genre">Genre: </string>
+    <string name="movie_mania_add_movie_details_director">Director: </string>
+    <string name="movie_mania_add_movie_details_writer">Writer: </string>
+    <string name="movie_mania_add_movie_details_actors">Actors: </string>
+    <string name="movie_mania_add_movie_details_plot">Plot: </string>
+    <string name="movie_mania_add_movie_details_language">Language: </string>
+    <string name="movie_mania_add_movie_details_country">Country: </string>
+    <string name="movie_mania_add_movie_details_awards">Awards: </string>
+    <string name="movie_mania_add_movie_details_poster">Poster: </string>
+    <string name="movie_mania_add_movie_details_metascore">Metascore: </string>
+    <string name="movie_mania_add_movie_details_imdb_rating">imdbRating: </string>
+    <string name="movie_mania_add_movie_details_imdb_votes">imdbVotes: </string>
+    <string name="movie_mania_add_movie_details_imdb_id">imdbID: </string>
+    <string name="movie_mania_add_movie_details_box_office">BoxOffice: </string>
+    <string name="movie_mania_add_movie_details_button_add">Add to List</string>
+    <string name="movie_mania_add_movie_details_button_remove">Remove from List</string>
+
 </resources>

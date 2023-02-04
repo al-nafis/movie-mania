@@ -1,6 +1,5 @@
 package com.mnafis.compose_ui_android_experiment.movie_mania
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -37,7 +36,10 @@ fun MovieMania() {
                 })
             ) {
                 val id = it.arguments?.getString(MovieManiaDetailsViewModel.SAVED_MOVIE_KEY)
-                MovieManiaDetailsScreen(id ?: "")
+                MovieManiaDetailsScreen(
+                    imdbId = id ?: "",
+                    onBackPressed = { navController.navigateUp() }
+                )
             }
         }
     }
