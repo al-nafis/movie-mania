@@ -41,8 +41,16 @@ Main Screen  ||  Search Screen  ||  Detail Screen
 
 ### Current Issues
 - Offline crash on movie list screen after some time
+  - turn off wifi and test removing movie from the list
+  - turn off wifi and search
 - handle backstack navigation
+  - go back from details screen to search screen and previous searched words are gone from the bar but the results
 - handle loading 
+  - details screen
+  - main screen
+- Dark and Light Theme color mess up
+  - text colors on dark mode
+  - background color on dark mode
 
 ## Next Step
 segregate two experiments into two different project
