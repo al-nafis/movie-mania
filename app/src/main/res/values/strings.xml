@@ -40,5 +40,6 @@
     <string name="movie_mania_add_movie_details_button_add">Add to List</string>
     <string name="movie_mania_add_movie_details_button_remove">Remove from List</string>
     <string name="movie_mania_add_movie_details_movie_poster_content_description">movie poster</string>
+    <string name="movie_mania_add_movie_details_movie_poster_place_holder_content_description">poster place holder</string>
 
 </resources>

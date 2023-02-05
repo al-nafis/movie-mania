@@ -1,5 +1,6 @@
 package com.mnafis.compose_ui_android_experiment.movie_mania.screens.details
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -12,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -117,13 +119,22 @@ private fun MovieHeaderPortion(movie: MovieDetails) {
                 .fillMaxWidth(Dimens.posterImageWidth)
                 .height(Dimens.posterImageHeight),
         ) {
-            AsyncImage(
-                modifier = Modifier.fillMaxSize(),
-                model = movie.poster,
-                contentDescription = stringResource(id = R.string.movie_mania_add_movie_details_movie_poster_content_description),
-                contentScale = ContentScale.FillBounds,
-                alignment = Alignment.Center
-            )
+            if (movie.poster.lowercase() == "n/a") {
+                Image(
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop,
+                    painter = painterResource(id = R.drawable.poster_place_holder),
+                    contentDescription = stringResource(id = R.string.movie_mania_add_movie_details_movie_poster_place_holder_content_description)
+                )
+            } else {
+                AsyncImage(
+                    modifier = Modifier.fillMaxSize(),
+                    alignment = Alignment.Center,
+                    contentScale = ContentScale.Crop,
+                    model = movie.poster,
+                    contentDescription = stringResource(id = R.string.movie_mania_add_movie_details_movie_poster_content_description),
+                )
+            }
         }
 
         Column(
