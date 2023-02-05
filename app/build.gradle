@@ -10,7 +10,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mnafis.compose_ui_android_experiment"
+        applicationId "com.mnafis.movie_mania"
         minSdk 29
         targetSdk 32
         versionCode 1
@@ -50,12 +50,12 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation 'androidx.compose.material3:material3:1.0.1'
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -73,9 +73,6 @@ dependencies {
 
     // hilt with jetpack compose navigation
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-
-    //mockk
-    testImplementation 'io.mockk:mockk:1.10.2'
 
     // coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'

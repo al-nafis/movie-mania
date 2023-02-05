@@ -1,32 +1,10 @@
-# Compose UI Android Experiment
-Experimenting Navigation with Compose along with data communication between screens
-
-## Tracker in the House
-You can see the list of people in this house and who is in which room. 
-You can also make someone go to a specific room.
-Each person is wearing a different colored shirt. You can make them wear a different shirt only 
-if it is available in the room where the person is and is not currently worn by someone else.
-
-### Used Tools
-- Compose Navigation
-
-### Rooms
-Living Room  ||  Dining Room  ||  Bedroom
-
-### People
-Adam  ||  Brook  ||  Connor  ||  Delilah  ||  Ethan
-
-### Shirts
-Red  ||  Blue  ||  Green  ||  Yellow  ||  Gray  ||  Black  ||  Dark Gray  ||  Magenta  ||  Cyan 
-
-### Current Issues
-- Random number not randomly generating as recomposition happens and somehow the random number has the same pattern on the 2nd time
-
-
 ## Movie Mania
-This experiment make api call using REST API and displays them on the screen.
-You can search by movie title or by key words. From the search result, you can choose a specific movie to get detailed information.
-You can save any movie you like in the local storage.
+This application is an encyclopedia for movies all around the world.
+Using the free OMDB API service, This application can search for any movies based on the user input.
+You can see all detailed information about your favorite movies and save them in the local database.
+
+### Api
+OMDB: https://www.omdbapi.com/
 
 ### Used Tools
 - Jetpack Compose
@@ -35,9 +13,15 @@ You can save any movie you like in the local storage.
 - Retrofit
 - Hilt
 - Room Database
+- Coil Image Loading Library
 
 ### Screens
 Main Screen  ||  Search Screen  ||  Detail Screen
+
+This application has three screen.
+Main Screen: User's list containing the movies he/she previously added.
+Search Screen: User searches for movies using the search option.
+Details Screen: Selecting a movie from the list will take the user in the detailed screen where it shows the information about the movie.
 
 ### Current Issues
 - Offline crash on movie list screen after some time
@@ -51,6 +35,3 @@ Main Screen  ||  Search Screen  ||  Detail Screen
 - Dark and Light Theme color mess up
   - text colors on dark mode
   - background color on dark mode
-
-## Next Step
-segregate two experiments into two different project

@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mnafis.compose_ui_android_experiment">
+    package="com.mnafis.movie_mania">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".MainApplication"
+        android:name="com.mnafis.movie_mania.MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_movie_mania"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_movie_mania_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Composeuiandroidexperiment"
+        android:theme="@style/Theme.MovieMania"
         tools:targetApi="32">
         <activity
-            android:name=".MainActivity"
+            android:name="com.mnafis.movie_mania.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Composeuiandroidexperiment">
+            android:theme="@style/Theme.MovieMania">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
