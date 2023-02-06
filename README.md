@@ -6,7 +6,7 @@ You can see all detailed information about your favorite movies and save them in
 ## Api
 OMDB: https://www.omdbapi.com/
 
-## Used Tools
+## Applied Tools
 - Jetpack Compose
 - Material 3
 - Compose Navigation
