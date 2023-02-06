@@ -13,10 +13,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieManiaSearchViewModel @Inject constructor(
-    private val movieManiaManager: OmdbManager
+    private val manager: OmdbManager
 ) : BaseViewModel() {
+
     private val _movies = MutableStateFlow(emptyList<Movie>())
     val movies = _movies.asStateFlow()
+
     override val screenName: String = MovieManiaScreen.SEARCH_SCREEN.screenName
 
     fun searchMovieByKeyWords(keyWords: String) {
@@ -24,9 +26,7 @@ class MovieManiaSearchViewModel @Inject constructor(
             _movies.value = emptyList()
         } else {
             viewModelScope.launch {
-                try {
-                    _movies.value = movieManiaManager.searchByKeyWords(keyWords)
-                } catch (e: Exception) {}
+                _movies.value = manager.searchByKeyWords(keyWords)
             }
         }
     }

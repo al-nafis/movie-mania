@@ -13,6 +13,8 @@ import com.mnafis.movie_mania.screens.main.MovieManiaMainScreen
 import com.mnafis.movie_mania.screens.search.MovieManiaSearchScreen
 import com.mnafis.movie_mania.theme.MovieManiaTheme
 
+const val MOVIE_MANIA_LOG_KEY = "Movie-Mania_Log: "
+
 @Composable
 fun MovieMania() {
     val navController = rememberNavController()

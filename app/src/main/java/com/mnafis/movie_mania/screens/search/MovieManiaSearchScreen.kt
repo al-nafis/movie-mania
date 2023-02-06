@@ -114,7 +114,10 @@ private fun SearchBar(
         trailingIcon = {
             if (searchText.isNotEmpty()) {
                 IconButton(
-                    onClick = { searchText = "" }
+                    onClick = {
+                        searchText = ""
+                        onTextChanged("")
+                    }
                 ) {
                     Icon(
                         Icons.Default.Close,

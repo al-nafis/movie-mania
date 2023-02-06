@@ -36,10 +36,8 @@ class MovieManiaDetailsViewModel @Inject constructor(
                     movie.value = result
                     _isMovieListed.value = true
                 } else {
-                    try {
-                        movie.value = manager.searchById(id)
-                        _isMovieListed.value = false
-                    } catch (e: Exception) {}
+                    movie.value = manager.searchById(id)
+                    _isMovieListed.value = false
                 }
             }
         }
@@ -48,13 +46,14 @@ class MovieManiaDetailsViewModel @Inject constructor(
     }
 
     fun addOrRemoveMovie(shouldAdd: Boolean) {
-        viewModelScope.launch {
-            if (shouldAdd) {
-                repo.addMovie(movie.value!!)
-                _isMovieListed.value = true
-            } else {
-                repo.removeMovie(movie.value!!)
-                _isMovieListed.value = false
+        movie.value?.let {
+            viewModelScope.launch {
+                if (shouldAdd) {
+                    repo.addMovie(it)
+                } else {
+                    repo.removeMovie(it)
+                }
+                _isMovieListed.value = shouldAdd
             }
         }
     }

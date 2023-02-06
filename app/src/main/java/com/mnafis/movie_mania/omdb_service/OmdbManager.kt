@@ -1,5 +1,7 @@
 package com.mnafis.movie_mania.omdb_service
 
+import android.util.Log
+import com.mnafis.movie_mania.MOVIE_MANIA_LOG_KEY
 import com.mnafis.movie_mania.models.Movie
 import com.mnafis.movie_mania.models.MovieDetails
 import com.mnafis.movie_mania.models.MovieSearchException
@@ -15,28 +17,34 @@ class OmdbManager @Inject constructor(
     private val apiKey = "34737eb2"
     private val searchType = "movie"
 
-    suspend fun searchByKeyWords(keyWords: String): List<Movie> {
+    suspend fun searchByKeyWords(keyWords: String): List<Movie> = try {
         val response = service.searchByKeyWords(
             key = apiKey,
             searchKey = keyWords,
             type = searchType
         )
         if (response.isSuccessful) {
-            return response.body()?.list ?: emptyList()
+            response.body()?.list ?: emptyList()
         } else {
-            throw MovieSearchException(errorMessage = response.errorBody()?.toString() ?: "")
+            Log.d(MOVIE_MANIA_LOG_KEY, response.errorBody().toString())
+            emptyList()
         }
+    } catch (e: Exception) {
+        Log.d(MOVIE_MANIA_LOG_KEY, e.message.toString())
+        emptyList()
     }
 
-    suspend fun searchById(id: String): MovieDetails? {
+    suspend fun searchById(id: String): MovieDetails? = try {
         val response = service.searchByMovieDetail(
             key = apiKey,
             id = id
         )
         if (response.isSuccessful) {
-            return response.body()
+            response.body()
         } else {
-            throw MovieSearchException(errorMessage = response.errorBody()?.toString() ?: "")
+            null
         }
+    } catch (e: Exception) {
+        null
     }
 }
