@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -98,10 +99,19 @@ private fun DisplayMovieDetails(
                 }
                 item { MovieDescriptionPortion(it) }
             }
-            if (movie == null) {
-                item {
-                    Text(text = stringResource(id = R.string.movie_mania_add_movie_details_no_response_message))
-                }
+        }
+        if (movie == null) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = Dimens.screenPadding),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(id = R.string.movie_mania_add_movie_details_no_response_message),
+                    textAlign = TextAlign.Center
+                )
             }
         }
     }
