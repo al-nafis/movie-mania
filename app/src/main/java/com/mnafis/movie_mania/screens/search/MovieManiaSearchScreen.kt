@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -62,7 +63,7 @@ fun MovieManiaSearchScreen(
                 )
         ) {
             SearchBar {
-                viewModel.searchMovieByKeyWords(it.text)
+                viewModel.searchMovieByKeyWords(it)
             }
 
             LazyColumn(
@@ -85,18 +86,17 @@ fun MovieManiaSearchScreen(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun SearchBar(
-    onTextChanged: (TextFieldValue) -> Unit
+    onTextChanged: (String) -> Unit
 ) {
-    val searchText: MutableState<TextFieldValue> =
-        remember { mutableStateOf(TextFieldValue("")) }
+    var searchText by rememberSaveable{ mutableStateOf("") }
     val keyboard = LocalSoftwareKeyboardController.current
     TextField(
         placeholder = { Text(text = stringResource(id = R.string.movie_mania_search_bar_hint)) },
-        value = searchText.value,
+        value = searchText,
         keyboardActions = KeyboardActions(onSearch = { keyboard?.hide() }),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         onValueChange = { value ->
-            searchText.value = value
+            searchText = value
             onTextChanged(value)
         },
         modifier = Modifier
@@ -110,9 +110,9 @@ private fun SearchBar(
             )
         },
         trailingIcon = {
-            if (searchText.value != TextFieldValue("")) {
+            if (searchText.isNotEmpty()) {
                 IconButton(
-                    onClick = { searchText.value = TextFieldValue("") }
+                    onClick = { searchText = "" }
                 ) {
                     Icon(
                         Icons.Default.Close,
