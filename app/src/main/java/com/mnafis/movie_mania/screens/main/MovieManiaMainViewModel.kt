@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.mnafis.movie_mania.BaseViewModel
 import com.mnafis.movie_mania.models.Movie
 import com.mnafis.movie_mania.models.MovieDetails
-import com.mnafis.movie_mania.models.MovieSearchException
 import com.mnafis.movie_mania.room_database.MovieManiaRepository
 import com.mnafis.movie_mania.screens.MovieManiaScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +25,7 @@ class MovieManiaMainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 movies.value = repo.getAllMovies().toMovieList()
-            } catch (e: MovieSearchException) {}
+            } catch (e: Exception) {}
         }
         return movies.asStateFlow()
     }

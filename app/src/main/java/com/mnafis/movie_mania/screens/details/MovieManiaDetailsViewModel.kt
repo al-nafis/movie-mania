@@ -3,7 +3,6 @@ package com.mnafis.movie_mania.screens.details
 import androidx.lifecycle.viewModelScope
 import com.mnafis.movie_mania.BaseViewModel
 import com.mnafis.movie_mania.models.MovieDetails
-import com.mnafis.movie_mania.models.MovieSearchException
 import com.mnafis.movie_mania.omdb_service.OmdbManager
 import com.mnafis.movie_mania.room_database.MovieManiaRepository
 import com.mnafis.movie_mania.screens.MovieManiaScreen
@@ -40,7 +39,7 @@ class MovieManiaDetailsViewModel @Inject constructor(
                     try {
                         movie.value = manager.searchById(id)
                         _isMovieListed.value = false
-                    } catch (e: MovieSearchException) {}
+                    } catch (e: Exception) {}
                 }
             }
         }

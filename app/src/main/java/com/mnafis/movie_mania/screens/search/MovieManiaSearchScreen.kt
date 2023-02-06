@@ -18,11 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mnafis.movie_mania.R
 import com.mnafis.movie_mania.screens.custom_views.MovieCard
-import com.mnafis.movie_mania.theme.*
+import com.mnafis.movie_mania.theme.ColorGray
+import com.mnafis.movie_mania.theme.ColorOffWhite
+import com.mnafis.movie_mania.theme.Dimens
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

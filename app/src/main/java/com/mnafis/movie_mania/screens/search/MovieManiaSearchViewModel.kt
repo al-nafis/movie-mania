@@ -3,7 +3,6 @@ package com.mnafis.movie_mania.screens.search
 import androidx.lifecycle.viewModelScope
 import com.mnafis.movie_mania.BaseViewModel
 import com.mnafis.movie_mania.models.Movie
-import com.mnafis.movie_mania.models.MovieSearchException
 import com.mnafis.movie_mania.omdb_service.OmdbManager
 import com.mnafis.movie_mania.screens.MovieManiaScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,10 +23,10 @@ class MovieManiaSearchViewModel @Inject constructor(
         if (keyWords.isEmpty()) {
             _movies.value = emptyList()
         } else {
-            viewModelScope.launch { // todo: test if calling this method creates multiple scopes by logging the list with a counter
+            viewModelScope.launch {
                 try {
                     _movies.value = movieManiaManager.searchByKeyWords(keyWords)
-                } catch (e: MovieSearchException) {}
+                } catch (e: Exception) {}
             }
         }
     }
