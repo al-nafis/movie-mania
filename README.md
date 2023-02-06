@@ -23,16 +23,3 @@ This application has three screen.
 Main Screen: User's list containing the movies he/she previously added.
 Search Screen: User searches for movies using the search option.
 Details Screen: Selecting a movie from the list will take the user in the detailed screen where it shows the information about the movie.
-
-### Current Issues
-- Offline crash on movie list screen after some time
-  - turn off wifi and test removing movie from the list
-  - turn off wifi and search
-- handle backstack navigation
-  - go back from details screen to search screen and previous searched words are gone from the bar but the results
-- handle loading 
-  - details screen
-  - main screen
-- Dark and Light Theme color mess up
-  - text colors on dark mode
-  - background color on dark mode
