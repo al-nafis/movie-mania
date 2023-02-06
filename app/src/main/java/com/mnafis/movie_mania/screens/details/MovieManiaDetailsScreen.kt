@@ -194,7 +194,10 @@ private fun FavoriteButton(isListed: Boolean, onClick: () -> Unit) {
 
 @Composable
 private fun MovieDescriptionPortion(movie: MovieDetails) {
-    Text(text = movie.title)
+    Text(
+        text = movie.title,
+        style = Typography.displayLarge
+    )
 
     DisplayFieldNextLine(
         header = stringResource(id = R.string.movie_mania_add_movie_details_country),
