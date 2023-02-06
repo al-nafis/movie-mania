@@ -8,6 +8,7 @@ OMDB: https://www.omdbapi.com/
 
 ### Used Tools
 - Jetpack Compose
+- Material 3
 - Compose Navigation
 - Coroutines
 - Retrofit
