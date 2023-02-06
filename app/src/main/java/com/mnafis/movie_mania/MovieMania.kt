@@ -11,12 +11,12 @@ import com.mnafis.movie_mania.screens.details.MovieManiaDetailsScreen
 import com.mnafis.movie_mania.screens.details.MovieManiaDetailsViewModel
 import com.mnafis.movie_mania.screens.main.MovieManiaMainScreen
 import com.mnafis.movie_mania.screens.search.MovieManiaSearchScreen
-import com.mnafis.movie_mania.theme.ComposeUIAndroidExperimentTheme
+import com.mnafis.movie_mania.theme.MovieManiaTheme
 
 @Composable
 fun MovieMania() {
     val navController = rememberNavController()
-    ComposeUIAndroidExperimentTheme {
+    MovieManiaTheme {
         NavHost(navController = navController, startDestination = MAIN_SCREEN.screenName) {
             composable(route = MAIN_SCREEN.screenName) {
                 MovieManiaMainScreen(

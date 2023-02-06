@@ -139,12 +139,12 @@ private fun MovieHeaderPortion(movie: MovieDetails) {
             verticalArrangement = Arrangement.spacedBy(Dimens.paddingMd)
         ) {
             DisplayFieldSideBySide(
-                header = stringResource(id = R.string.movie_mania_add_movie_details_country),
-                value = movie.country
+                header = stringResource(id = R.string.movie_mania_add_movie_details_year),
+                value = movie.year
             )
             DisplayFieldSideBySide(
-                header = stringResource(id = R.string.movie_mania_add_movie_details_language),
-                value = movie.language
+                header = stringResource(id = R.string.movie_mania_add_movie_details_runtime),
+                value = movie.runtime
             )
             DisplayFieldSideBySide(
                 header = stringResource(id = R.string.movie_mania_add_movie_details_imdb_rating),
@@ -157,10 +157,6 @@ private fun MovieHeaderPortion(movie: MovieDetails) {
             DisplayFieldSideBySide(
                 header = stringResource(id = R.string.movie_mania_add_movie_details_metascore),
                 value = movie.metascore
-            )
-            DisplayFieldSideBySide(
-                header = stringResource(id = R.string.movie_mania_add_movie_details_genre),
-                value = movie.genre
             )
             DisplayFieldSideBySide(
                 header = stringResource(id = R.string.movie_mania_add_movie_details_rated),
@@ -191,12 +187,12 @@ private fun MovieDescriptionPortion(movie: MovieDetails) {
     Text(text = movie.title)
 
     DisplayFieldNextLine(
-        header = stringResource(id = R.string.movie_mania_add_movie_details_year),
-        value = movie.year
+        header = stringResource(id = R.string.movie_mania_add_movie_details_country),
+        value = movie.country
     )
     DisplayFieldNextLine(
-        header = stringResource(id = R.string.movie_mania_add_movie_details_runtime),
-        value = movie.runtime
+        header = stringResource(id = R.string.movie_mania_add_movie_details_language),
+        value = movie.language
     )
     DisplayFieldNextLine(
         header = stringResource(id = R.string.movie_mania_add_movie_details_director),
@@ -213,6 +209,10 @@ private fun MovieDescriptionPortion(movie: MovieDetails) {
     DisplayFieldNextLine(
         header = stringResource(id = R.string.movie_mania_add_movie_details_plot),
         value = movie.plot
+    )
+    DisplayFieldNextLine(
+        header = stringResource(id = R.string.movie_mania_add_movie_details_genre),
+        value = movie.genre
     )
     DisplayFieldNextLine(
         header = stringResource(id = R.string.movie_mania_add_movie_details_box_office),

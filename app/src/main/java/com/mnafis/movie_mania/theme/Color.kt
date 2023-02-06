@@ -2,22 +2,15 @@ package com.mnafis.movie_mania.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val DarkPrimaryColor = Color(0xCE161F4D)
+val DarkBackground = Color(0xFF141414)
+val DarkCardBackground = Color(0xCD1B1B1B)
 
-val LightPrimaryColor = Color(0xFF047223)
-val LightPrimaryDarkColor = Color(0xFF034909)
-val LightSecondaryColor = Color(0xCDC5C5C5)
 
-val ColorRed = Color(0xCD690000)
-val ColorBlue = Color(0xCD000A4B)
-val ColorGreen = Color(0xCD004B10)
-val ColorYellow = Color(0xCD635500)
-val ColorGray = Color(0xCD818181)
+val LightPrimaryColor = Color(0xFF3F51B5)
+val LightPrimaryDarkColor = Color(0xFF313F8B)
+
+val ColorGray = Color(0xCD313131)
 val ColorBlack = Color(0xCD000000)
-val ColorDarkGray = Color(0xCD363636)
-val ColorMagenta = Color(0xFF791F88)
-val ColorCyan = Color(0xCD006860)
-val ColorWhite = Color(0xCDFFFFFF)
-val ColorOffWhite = Color(0xCDCFCFCF)
+val ColorWhite = Color(0xFFFFFFFF)
+val ColorOffWhite = Color(0x80DADADA)
