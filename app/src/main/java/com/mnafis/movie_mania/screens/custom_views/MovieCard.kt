@@ -17,6 +17,7 @@ import coil.compose.AsyncImage
 import com.mnafis.movie_mania.R
 import com.mnafis.movie_mania.theme.ColorBlack
 import com.mnafis.movie_mania.theme.Dimens
+import com.mnafis.movie_mania.theme.Typography
 
 @Composable
 fun MovieCard(
@@ -62,7 +63,8 @@ fun MovieCard(
                 Text(
                     text = title,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    style = Typography.headlineLarge
                 )
                 Text(
                     text = stringResource(

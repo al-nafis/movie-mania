@@ -235,7 +235,7 @@ private fun DisplayFieldSideBySide(
     ) {
         if (header.isNotEmpty()) {
 
-            Text(text = header)
+            Text(text = header, style = Typography.headlineLarge)
             Divider(
                 modifier = Modifier
                     .fillMaxHeight()
@@ -258,7 +258,7 @@ private fun DisplayFieldNextLine(
             .padding(vertical = Dimens.paddingLg)
     ) {
         if (header.isNotEmpty()) {
-            Text(text = header)
+            Text(text = header, style = Typography.headlineLarge)
             Divider(
                 modifier = Modifier
                     .fillMaxWidth()
