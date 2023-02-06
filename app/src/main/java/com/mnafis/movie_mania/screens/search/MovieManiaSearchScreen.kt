@@ -40,13 +40,8 @@ fun MovieManiaSearchScreen(
         topBar = {
             TopAppBar(
                 title = { Text(text = viewModel.screenName) },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = LightPrimaryColor,
-                    titleContentColor = ColorWhite
-                ),
                 navigationIcon = {
                     IconButton(
-                        colors = IconButtonDefaults.iconButtonColors(contentColor = ColorWhite),
                         onClick = onBackPressed
                     ) {
                         Icon(
@@ -129,11 +124,6 @@ private fun SearchBar(
                 }
             }
         },
-        singleLine = true,
-        colors = TextFieldDefaults.textFieldColors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
-        )
+        singleLine = true
     )
 }

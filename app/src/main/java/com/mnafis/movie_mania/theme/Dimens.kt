@@ -4,12 +4,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 object Dimens {
-    // font size
-    val titleFontSize = 36.sp
-    val bodyFontSize = 14.sp
-    val bodyHeaderFontSize = 18.sp
-    val headerFontSize = 24.sp
-
     // padding
     val paddingSm = 4.dp
     val paddingMd = 8.dp

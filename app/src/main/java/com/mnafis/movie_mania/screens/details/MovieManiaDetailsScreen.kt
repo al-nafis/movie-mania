@@ -65,13 +65,8 @@ private fun DisplayMovieDetails(
                         text = screenName
                     )
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = LightPrimaryColor,
-                    titleContentColor = ColorWhite
-                ),
                 navigationIcon = {
                     IconButton(
-                        colors = IconButtonDefaults.iconButtonColors(contentColor = ColorWhite),
                         onClick = onBackPressed
                     ) {
                         Icon(
@@ -180,9 +175,6 @@ private fun FavoriteButton(isListed: Boolean, onClick: () -> Unit) {
     Button(
         modifier = Modifier
             .fillMaxWidth(),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = if (isListed) LightPrimaryDarkColor else LightPrimaryColor
-        ),
         onClick = onClick
     ) {
         Text(
@@ -196,7 +188,7 @@ private fun FavoriteButton(isListed: Boolean, onClick: () -> Unit) {
 
 @Composable
 private fun MovieDescriptionPortion(movie: MovieDetails) {
-    Text(text = movie.title, style = TextStyles.TextHeader.value)
+    Text(text = movie.title)
 
     DisplayFieldNextLine(
         header = stringResource(id = R.string.movie_mania_add_movie_details_year),
@@ -243,7 +235,7 @@ private fun DisplayFieldSideBySide(
     ) {
         if (header.isNotEmpty()) {
 
-            Text(text = header, style = TextStyles.TextBodyBolded.value)
+            Text(text = header)
             Divider(
                 modifier = Modifier
                     .fillMaxHeight()
@@ -251,7 +243,7 @@ private fun DisplayFieldSideBySide(
                 color = Color.Transparent
             )
         }
-        Text(text = value, style = TextStyles.TextBody.value)
+        Text(text = value)
     }
 }
 
@@ -266,7 +258,7 @@ private fun DisplayFieldNextLine(
             .padding(vertical = Dimens.paddingLg)
     ) {
         if (header.isNotEmpty()) {
-            Text(text = header, style = TextStyles.TextBodyHeaderBolded.value)
+            Text(text = header)
             Divider(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -274,7 +266,7 @@ private fun DisplayFieldNextLine(
                 color = Color.Transparent
             )
         }
-        Text(text = value, style = TextStyles.TextBody.value)
+        Text(text = value)
     }
 }
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -36,20 +37,14 @@ fun MovieManiaMainScreen(
             .fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text(text = viewModel.screenName) },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = LightPrimaryColor,
-                    titleContentColor = ColorWhite
-                )
+                title = { Text(text = viewModel.screenName) }
             )
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                containerColor = LightPrimaryColor,
-                onClick = onClickFloatingButton,
+                onClick = onClickFloatingButton
             ) {
                 Text(
-                    color = ColorWhite,
                     text = stringResource(id = R.string.movie_mania_add_movie_button)
                 )
             }

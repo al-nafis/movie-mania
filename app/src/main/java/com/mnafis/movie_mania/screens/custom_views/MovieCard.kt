@@ -60,13 +60,11 @@ fun MovieCard(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    color = ColorBlack,
                     text = title,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    color = ColorBlack,
                     text = stringResource(
                         id = R.string.movie_mania_add_movie_card_item_release_year,
                         year
