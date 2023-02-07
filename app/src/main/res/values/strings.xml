@@ -32,5 +32,8 @@
     <string name="movie_mania_add_movie_details_button_remove">Remove from List</string>
     <string name="movie_mania_add_movie_details_movie_poster_content_description">movie poster</string>
     <string name="movie_mania_add_movie_details_movie_poster_place_holder_content_description">poster place holder</string>
+    <string name="movie_mania_no_connection_dialog_title">No Connection</string>
+    <string name="movie_mania_no_connection_message">Seems like there is no internet connection</string>
+    <string name="movie_mania_button_okay">Okay</string>
 
 </resources>

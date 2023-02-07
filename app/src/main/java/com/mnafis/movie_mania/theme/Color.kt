@@ -12,5 +12,6 @@ val LightPrimaryDarkColor = Color(0xFF313F8B)
 
 val ColorGray = Color(0xCD313131)
 val ColorBlack = Color(0xCD000000)
-val ColorWhite = Color(0xFFFFFFFF)
+val ColorWhite = Color(0xFFEEEEEE)
+val ColorWallWhite = Color(0xFFDFDFDF)
 val ColorOffWhite = Color(0x80DADADA)

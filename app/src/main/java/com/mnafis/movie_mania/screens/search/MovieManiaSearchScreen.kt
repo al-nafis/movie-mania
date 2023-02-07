@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mnafis.movie_mania.R
+import com.mnafis.movie_mania.screens.custom_views.AppDialog
 import com.mnafis.movie_mania.screens.custom_views.MovieCard
 import com.mnafis.movie_mania.theme.ColorGray
 import com.mnafis.movie_mania.theme.ColorOffWhite
@@ -67,6 +68,16 @@ fun MovieManiaSearchScreen(
             SearchBar {
                 viewModel.searchMovieByKeyWords(it)
             }
+            val showNoConnectivityDialog by viewModel.showNoConnectivityMessage.collectAsState()
+
+            if (showNoConnectivityDialog) {
+                AppDialog(
+                    titleText = stringResource(id = R.string.movie_mania_no_connection_dialog_title),
+                    bodyText = stringResource(id = R.string.movie_mania_no_connection_message),
+                    primaryButtonText = stringResource(id = R.string.movie_mania_button_okay),
+                    onPrimaryButtonClick = { viewModel.closeDialog() }
+                )
+            }
 
             LazyColumn(
                 modifier = Modifier,
@@ -90,7 +101,7 @@ fun MovieManiaSearchScreen(
 private fun SearchBar(
     onTextChanged: (String) -> Unit
 ) {
-    var searchText by rememberSaveable{ mutableStateOf("") }
+    var searchText by rememberSaveable { mutableStateOf("") }
     val keyboard = LocalSoftwareKeyboardController.current
     TextField(
         placeholder = { Text(text = stringResource(id = R.string.movie_mania_search_bar_hint)) },

@@ -6,6 +6,7 @@ import com.mnafis.movie_mania.models.MovieDetails
 import com.mnafis.movie_mania.omdb_service.OmdbManager
 import com.mnafis.movie_mania.room_database.MovieManiaRepository
 import com.mnafis.movie_mania.screens.MovieManiaScreen
+import com.mnafis.movie_mania.utils.NetworkConnectionManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,11 +17,9 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieManiaDetailsViewModel @Inject constructor(
     private val manager: OmdbManager,
-    private val repo: MovieManiaRepository
+    private val repo: MovieManiaRepository,
+    private val connectionManager: NetworkConnectionManager
 ) : BaseViewModel() {
-    companion object {
-        const val SAVED_MOVIE_KEY = "imdb_id"
-    }
 
     private val movie: MutableStateFlow<MovieDetails?> = MutableStateFlow(null)
     private val _isMovieListed: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -57,4 +56,6 @@ class MovieManiaDetailsViewModel @Inject constructor(
             }
         }
     }
+
+    fun isNetworkAvailable() = connectionManager.isNetworkAvailable()
 }

@@ -1,11 +1,9 @@
 package com.mnafis.movie_mania.screens.main
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
-import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -19,9 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mnafis.movie_mania.R
 import com.mnafis.movie_mania.screens.custom_views.MovieCard
-import com.mnafis.movie_mania.theme.ColorWhite
 import com.mnafis.movie_mania.theme.Dimens
-import com.mnafis.movie_mania.theme.LightPrimaryColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -22,8 +22,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.mnafis.movie_mania.R
 import com.mnafis.movie_mania.models.MovieDetails
-import com.mnafis.movie_mania.screens.MovieManiaScreen
-import com.mnafis.movie_mania.theme.*
+import com.mnafis.movie_mania.theme.Dimens
+import com.mnafis.movie_mania.theme.Typography
 
 @Composable
 fun MovieManiaDetailsScreen(
@@ -37,8 +37,9 @@ fun MovieManiaDetailsScreen(
     DisplayMovieDetails(
         screenName = viewModel.screenName,
         movie = movie,
-        onBackPressed = onBackPressed,
         isMovieListed = isMovieListed,
+        displayNoConnectionMessage = !viewModel.isNetworkAvailable(),
+        onBackPressed = onBackPressed,
         shouldAddOrRemove = {
             viewModel.addOrRemoveMovie(it)
         }
@@ -51,6 +52,7 @@ private fun DisplayMovieDetails(
     screenName: String,
     movie: MovieDetails?,
     isMovieListed: Boolean,
+    displayNoConnectionMessage: Boolean,
     onBackPressed: () -> Unit,
     shouldAddOrRemove: (Boolean) -> Unit
 ) {
@@ -109,7 +111,10 @@ private fun DisplayMovieDetails(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = stringResource(id = R.string.movie_mania_add_movie_details_no_response_message),
+                    text = stringResource(
+                        id = if (displayNoConnectionMessage) R.string.movie_mania_no_connection_message
+                        else R.string.movie_mania_add_movie_details_no_response_message
+                    ),
                     textAlign = TextAlign.Center
                 )
             }
@@ -285,7 +290,7 @@ private fun DisplayFieldNextLine(
 
 @Composable
 @Preview
-fun DisplayMovieDetails() {
+fun PreviewDisplayMovieDetails() {
     DisplayMovieDetails(
         screenName = "Movie Details",
         movie = MovieDetails(
@@ -310,6 +315,7 @@ fun DisplayMovieDetails() {
         ),
         isMovieListed = true,
         onBackPressed = {},
+        displayNoConnectionMessage = false,
         shouldAddOrRemove = {}
     )
 }

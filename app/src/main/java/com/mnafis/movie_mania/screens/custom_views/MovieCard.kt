@@ -15,7 +15,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import com.mnafis.movie_mania.R
-import com.mnafis.movie_mania.theme.ColorBlack
 import com.mnafis.movie_mania.theme.Dimens
 import com.mnafis.movie_mania.theme.Typography
 
