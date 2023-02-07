@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mnafis.movie_mania.R
+import com.mnafis.movie_mania.screens.custom_views.LoadingSpinner
 import com.mnafis.movie_mania.screens.custom_views.MovieCard
 import com.mnafis.movie_mania.theme.Dimens
 
@@ -27,6 +28,7 @@ fun MovieManiaMainScreen(
 ) {
     val viewModel: MovieManiaMainViewModel = hiltViewModel()
     val movies by viewModel.getMovies().collectAsState()
+    val isDataLoading by viewModel.isDataLoading.collectAsState()
 
     Scaffold(
         modifier = Modifier
@@ -84,10 +86,14 @@ fun MovieManiaMainScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(
-                    text = stringResource(id = R.string.movie_mania_selected_movies_empty_list_message),
-                    textAlign = TextAlign.Center
-                )
+                if (isDataLoading) {
+                    LoadingSpinner()
+                } else {
+                    Text(
+                        text = stringResource(id = R.string.movie_mania_selected_movies_empty_list_message),
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
     }

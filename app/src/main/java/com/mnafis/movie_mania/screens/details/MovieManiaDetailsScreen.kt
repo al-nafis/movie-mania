@@ -22,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.mnafis.movie_mania.R
 import com.mnafis.movie_mania.models.MovieDetails
+import com.mnafis.movie_mania.screens.custom_views.LoadingSpinner
 import com.mnafis.movie_mania.theme.Dimens
 import com.mnafis.movie_mania.theme.Typography
 
@@ -33,12 +34,14 @@ fun MovieManiaDetailsScreen(
     val viewModel: MovieManiaDetailsViewModel = hiltViewModel()
     val movie: MovieDetails? by viewModel.loadMovie(id = imdbId).collectAsState()
     val isMovieListed: Boolean by viewModel.isMovieListed.collectAsState()
+    val isDataLoading: Boolean by viewModel.isDataLoading.collectAsState()
 
     DisplayMovieDetails(
         screenName = viewModel.screenName,
         movie = movie,
         isMovieListed = isMovieListed,
         displayNoConnectionMessage = !viewModel.isNetworkAvailable(),
+        isDataLoading = isDataLoading,
         onBackPressed = onBackPressed,
         shouldAddOrRemove = {
             viewModel.addOrRemoveMovie(it)
@@ -53,6 +56,7 @@ private fun DisplayMovieDetails(
     movie: MovieDetails?,
     isMovieListed: Boolean,
     displayNoConnectionMessage: Boolean,
+    isDataLoading: Boolean,
     onBackPressed: () -> Unit,
     shouldAddOrRemove: (Boolean) -> Unit
 ) {
@@ -110,13 +114,17 @@ private fun DisplayMovieDetails(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(
-                    text = stringResource(
-                        id = if (displayNoConnectionMessage) R.string.movie_mania_no_connection_message
-                        else R.string.movie_mania_add_movie_details_no_response_message
-                    ),
-                    textAlign = TextAlign.Center
-                )
+                if (isDataLoading) {
+                    LoadingSpinner()
+                } else {
+                    Text(
+                        text = stringResource(
+                            id = if (displayNoConnectionMessage) R.string.movie_mania_no_connection_message
+                            else R.string.movie_mania_add_movie_details_no_response_message
+                        ),
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
     }
@@ -314,8 +322,9 @@ fun PreviewDisplayMovieDetails() {
             boxOffice = "$130,096,601"
         ),
         isMovieListed = true,
-        onBackPressed = {},
         displayNoConnectionMessage = false,
+        isDataLoading = false,
+        onBackPressed = {},
         shouldAddOrRemove = {}
     )
 }

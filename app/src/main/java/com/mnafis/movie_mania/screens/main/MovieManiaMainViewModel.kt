@@ -19,12 +19,15 @@ class MovieManiaMainViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     private val movies = MutableStateFlow(emptyList<Movie>())
+    private val _isDataLoading: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    val isDataLoading: StateFlow<Boolean> = _isDataLoading.asStateFlow()
 
     override val screenName = MovieManiaScreen.MAIN_SCREEN.screenName
 
     fun getMovies(): StateFlow<List<Movie>> {
         viewModelScope.launch {
             movies.value = repo.getAllMovies().toMovieList()
+            _isDataLoading.value = false
         }
         return movies.asStateFlow()
     }

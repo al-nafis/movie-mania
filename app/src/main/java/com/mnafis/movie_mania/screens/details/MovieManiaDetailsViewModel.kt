@@ -24,6 +24,8 @@ class MovieManiaDetailsViewModel @Inject constructor(
     private val movie: MutableStateFlow<MovieDetails?> = MutableStateFlow(null)
     private val _isMovieListed: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isMovieListed: StateFlow<Boolean> = _isMovieListed.asStateFlow()
+    private val _isDataLoading: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    val isDataLoading: StateFlow<Boolean> = _isDataLoading.asStateFlow()
 
     override val screenName: String = MovieManiaScreen.DETAIL_SCREEN.screenName
 
@@ -38,6 +40,7 @@ class MovieManiaDetailsViewModel @Inject constructor(
                     movie.value = manager.searchById(id)
                     _isMovieListed.value = false
                 }
+                _isDataLoading.value = false
             }
         }
 

@@ -4,7 +4,6 @@ import android.util.Log
 import com.mnafis.movie_mania.MOVIE_MANIA_LOG_KEY
 import com.mnafis.movie_mania.models.Movie
 import com.mnafis.movie_mania.models.MovieDetails
-import com.mnafis.movie_mania.models.MovieSearchException
 import javax.inject.Inject
 
 class OmdbManager @Inject constructor(
