@@ -139,6 +139,6 @@ private fun SearchBar(
             }
         },
         singleLine = true,
-        colors = TextFieldDefaults.textFieldColors(textColor = if (isSystemInDarkTheme()) ColorOffWhite else ColorGray)
+        colors = TextFieldDefaults.colors( if (isSystemInDarkTheme()) ColorOffWhite else ColorGray)
     )
 }
